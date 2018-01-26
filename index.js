@@ -1,5 +1,6 @@
 let chalk = require('chalk');
 const app = require('./src/app');
+var fs = require('fs');
 
 // port
 var port = 3000;
@@ -11,10 +12,18 @@ if(arg2 > 0){
 app.set('port', process.env.PORT || port);
 
 
-// start server here
+// get bingo
 app.get('/bingo', function (req, res) {
-    res.send('Bingo');
+    var number = [];
+    // lecture du fichier number.txt
+    fs.readFile('src/numbers.txt', 'utf8', function(err, data) {  
+        if (err) throw err;
+        number.push(data);
+        res.send(number.join());
+    });
+
   })
 
-app.listen(port)
-console.log(chalk.green('Hello web server ' + port));
+  console.log("serveur start");
+  app.listen(port)
+
