@@ -11,5 +11,9 @@ if(arg2 > 0){
 
 
 // start server here
+app.get('/', function (req, res) {
+    res.send('Hello World!')
+  })
+  
 app.listen(port)
 console.log(chalk.green('Hello web server ' + port));
