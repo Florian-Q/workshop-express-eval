@@ -17,7 +17,7 @@ app.get('/bingo', function (req, res) {
     // lecture du fichier number.txt
     fs.readFile('src/numbers.txt', 'utf8', function(err, data) {  
         if (err) throw err;
-        res.send(data.split(/\r?\n/).join());
+        res.send(data.split(/\r?\n/,5).join());
     });
 
   })
