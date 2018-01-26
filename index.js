@@ -14,12 +14,10 @@ app.set('port', process.env.PORT || port);
 
 // get bingo
 app.get('/bingo', function (req, res) {
-    var number = [];
     // lecture du fichier number.txt
     fs.readFile('src/numbers.txt', 'utf8', function(err, data) {  
         if (err) throw err;
-        number.push(data);
-        res.send(number.join());
+        res.send(data.split(/\r?\n/).join());
     });
 
   })
